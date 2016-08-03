@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import * as restaurantActions from '../../actions/restaurantActions';
 
 class HomeInput extends Component {
@@ -27,22 +28,26 @@ class HomeInput extends Component {
   render() {
     return (
       <div>
+      <label> I want</label>
         <input
           type="text"
           onChange={(e) => this.setState({q: e.target.value})}
           value={this.state.q}
-        />
+        /> 
+        <label>near</label>
         <input
           type="text"
           onChange={(e) => this.setState({locality: e.target.value})}
           value={this.state.locality}
+          placeholder="Enter a City"
         />
         <input
           type="text"
           onChange={(e) => this.setState({region: e.target.value})}
           value={this.state.region}
+          placeholder="Enter a State"
         />
-        <button onClick={this.restaurantSearch}>Submit</button>
+        <Link onClick={this.restaurantSearch} to="listPage" className="btn btn-primary btn-s">Submit</Link>
       </div>
 
     );
@@ -51,7 +56,7 @@ class HomeInput extends Component {
 
 HomeInput.propTypes = {
   getRestaurantList: PropTypes.func.isRequired,
-  restaurants: PropTypes.array.isRequired,
+  restaurants: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {

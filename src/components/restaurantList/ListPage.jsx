@@ -5,18 +5,23 @@ import ListItem from './ListItem';
 
 const ListPage = (props) => (
   <div>
-    <ul>
-    { props.restaurants.map((restaurant, i) => <ListItem {...restaurant} key={i} />)}
-    </ul>
+    {props.restaurants.isLoading ?
+      <p>Loading restaurants......</p> :
+      <ul>
+      { props.restaurants.restaurantList.map((restaurant, i) =>
+        <ListItem {...restaurant} key={i} />
+      )}
+      </ul>
+    }
   </div>
  );
 
 ListPage.propTypes = {
-  restaurants: PropTypes.array.isRequired,
+  restaurants: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
-  debugger;
+  // debugger;
   return {
     restaurants: state.restaurants,
   };

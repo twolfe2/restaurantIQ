@@ -9,3 +9,6 @@ export function getRestaurants(searchObj) {
 }
 
 
+// export default function restaurantApi {
+//   getRestaurants: (searchObj) => axios.post(searchURL, searchObj),
+// };

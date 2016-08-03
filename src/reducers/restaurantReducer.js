@@ -4,9 +4,8 @@ import * as types from '../actions/actionTypes';
 export default function restaurantReducer(state = [], action) {
   switch (action.type) {
     case types.RESTAURANT_SEARCH:
-      return [...state,
-        Object.assign({}, action.restaurantList),
-      ];
+    console.log('reducer rs', action.restaurantList);
+      return [...state, ...action.restaurantList];
     default:
       return state;
   }

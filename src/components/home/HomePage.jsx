@@ -8,7 +8,7 @@ class HomePage extends Component {
       <div className="jumbotron">
         <h1>RestaurantIQ</h1>
         <HomeInput />
-        <Link to="list" className="btn btn-primary">See List</Link>
+        <Link to="listPage" className="btn btn-primary">See List</Link>
         <Link to="about" className="btn btn-primary">See About</Link>
       </div>
     );

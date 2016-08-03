@@ -7,11 +7,13 @@ import AboutPage from './components/about/AboutPage';
 import DetailsPage from './components/details/DetailsPage';
 import CoursesPage from './components/course/CoursesPage';
 
+
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
     <Route path="about" component={AboutPage} />
     <Route path="courses" component={CoursesPage} />
+    <Route path="listPage" component={ListPage} />
   </Route>
 
   );

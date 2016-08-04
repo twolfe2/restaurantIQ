@@ -15,6 +15,10 @@ function toggleLoading() {
   return { type: types.TOGGLE_LOADING };
 }
 
+export function getRestaurantDetails(restaurant) {
+  return { type: types.GET_RESTAURANT_DETAILS, restaurant };
+}
+
 export function getRestaurantList(searchObj) {
   return dispatch => {
     dispatch(toggleLoading());

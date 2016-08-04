@@ -6,13 +6,12 @@ import ListPage from './components/restaurantList/ListPage';
 import AboutPage from './components/about/AboutPage';
 import DetailsPage from './components/details/DetailsPage';
 
-
-
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
     <Route path="about" component={AboutPage} />
     <Route path="listPage" component={ListPage} />
+    <Route path="detalsPage/:restaurantId" component={DetailsPage} />
   </Route>
 
   );

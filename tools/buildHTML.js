@@ -1,12 +1,12 @@
 import fs from 'fs';
-import cherrio from 'cheerio';
+import cheerio from 'cheerio';
 import colors from  'colors';
 
 fs.readFile('src/index.html', 'utf8', (err, markup) => {
   if (err) {
     return console.log(err);
   }
-  const $ = cherrio.load(markup);
+  const $ = cheerio.load(markup);
 
   $('head').prepend('<link rel="stylesheet" href="styles.css">');
 

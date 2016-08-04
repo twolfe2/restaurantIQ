@@ -17,12 +17,9 @@ function toggleLoading() {
 
 export function getRestaurantList(searchObj) {
   return dispatch => {
-    console.log('before dispatch');
     dispatch(toggleLoading());
-    console.log('after dispatch');
     restaurantApi.getRestaurants(searchObj)
       .then(res => {
-        console.log(res.data);
         dispatch(restaurantListSuccess(res.data));
         dispatch(toggleLoading());
       }).catch(err => {

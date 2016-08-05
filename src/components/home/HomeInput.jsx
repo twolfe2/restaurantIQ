@@ -3,36 +3,53 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import * as restaurantActions from '../../actions/restaurantActions';
 import inputActions from '../../actions/inputActions';
+import TextField from 'material-ui/TextField';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+
+const labelStyle = {
+  marginRight: '10px'
+};
 
 const HomeInput = (props) => (
-  <div>
-    <label> I want</label>
-    <input
-      type="text"
-      onChange={(e) => props.updateQ(e.target.value)}
-      value={props.searchObj.q}
-    />
-    <label>near</label>
-    <input
-      type="text"
-      onChange={(e) => props.updateLocality(e.target.value)}
-      value={props.searchObj.locality}
-      placeholder="Enter a City"
-    />
-    <input
-      type="text"
-      onChange={(e) => props.updateRegion(e.target.value)}
-      value={props.searchObj.region}
-      placeholder="Enter a State"
-    />
-    <Link
-      onClick={() => props.getRestaurantList(props.searchObj)}
-      to="listPage"
-      className="btn btn-primary btn-s"
-    >
-        Submit
-    </Link>
+  <div className='row'>
+    <div className='col-md-12 col-lg-9 col-lg-offset-2'> 
+      <div className='col-xs-12 col-lg-4 col-md-4'>
+        <label style={labelStyle}>I want</label>
+        <TextField
+          floatingLabelText="Enter restaurant name or cuisine"
+          onChange={(e) => props.updateQ(e.target.value)}
+          value={props.searchObj.q}
+        />
+      </div>
+      <div className='col-xs-12 col-lg-4 col-md-4'>
+      <label style={labelStyle}>near</label>
+      <TextField
+        floatingLabelText="Enter a City"
+        onChange={(e) => props.updateLocality(e.target.value)}
+        value={props.searchObj.locality}
+      />
+      </div>
+      <div className='col-xs-12 col-lg-1 col-md-3'>
+        <TextField
+          floatingLabelText="Enter a State"
+          onChange={(e) => props.updateRegion(e.target.value)}
+          value={props.searchObj.region}
+       />
+      </div>
+      <div className='col-xs-12 col-md-12 col-lg-11'>
+      <RaisedButton
+        label="Search"
+        primary={true}
+        fullWidth={true}
+        containerElement={<Link to="listPage" />}
+        onClick={() => props.getRestaurantList(props.searchObj)}
+      >
+      </RaisedButton>
+      </div>
+    </div>
   </div>
+
 );
 
 HomeInput.propTypes = {

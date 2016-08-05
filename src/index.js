@@ -2,6 +2,7 @@
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import configureStore from './store/configureStore';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
@@ -9,9 +10,10 @@ import routes from './routes';
 import './styles/styles.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+injectTapEventPlugin();
 const store = configureStore();
 
-render (
+render(
   <Provider store={store}>
     <Router history={browserHistory} routes={routes} />
   </Provider>,

@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import * as restaurantActions from '../../actions/restaurantActions';
 
-
+//  to={pathname:'detailsPage' query:props.factual_id}
+// this.props.location.query
 const ListItem = (props) => (
   <li>
     <Link
-      onClick={() => props.getRestaurantDetails(props)}
-      to="detailsPage"
-      params={props.factual_id}
+      onClick={() => props.setRestaurantDetails(props)}
+      to={`/detailsPage/${props.factual_id}`}
     >
       <h1>{props.name}</h1>
     </Link>
@@ -21,16 +21,21 @@ const ListItem = (props) => (
 ListItem.propTypes = {
   name: PropTypes.string.isRequired,
   factual_id: PropTypes.string.isRequired,
-  getRestaurantDetails: PropTypes.func.isRequired,
+  setRestaurantDetails: PropTypes.func.isRequired,
 };
 
+function mapStateToProps() {
+  return {
+
+  };
+}
 function mapDistpatchToProps(dispatch) {
   return {
-    getRestaurantDetails: restaurant => dispatch(
-      restaurantActions.getRestaurantDetails(restaurant)
+    setRestaurantDetails: restaurant => dispatch(
+      restaurantActions.setRestaurantDetails(restaurant)
       ),
   };
 }
 
 
-export default connect(null, mapDistpatchToProps)(ListItem);
+export default connect(mapStateToProps, mapDistpatchToProps)(ListItem);

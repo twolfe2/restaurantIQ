@@ -9,9 +9,10 @@ import DetailsPage from './components/details/DetailsPage';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
-    <Route path="about" component={AboutPage} />
-    <Route path="listPage" component={ListPage} />
-    <Route path="detalsPage/:restaurantId" component={DetailsPage} />
+    <Route path="/about" component={AboutPage} />
+    <Route path="/listPage" component={ListPage} />
+    <Route path="/detailsPage(/:restaurantId)" component={DetailsPage}>
+    </Route>
   </Route>
 
   );

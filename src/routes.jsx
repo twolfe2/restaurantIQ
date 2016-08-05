@@ -11,7 +11,7 @@ export default (
     <IndexRoute component={HomePage} />
     <Route path="/about" component={AboutPage} />
     <Route path="/listPage" component={ListPage} />
-    <Route path="/detailsPage(/:restaurantId)" component={DetailsPage}>
+    <Route path="/detailsPage" component={DetailsPage}>
     </Route>
   </Route>
 

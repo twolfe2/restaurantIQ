@@ -9,8 +9,14 @@ class DetailsPage extends Component {
     let fourInfo = '';
   }
   componentDidMount() {
-    this.props.getFourInfo(this.props.restaurant.latitude, this.props.restaurant.longitude);
-    this.props.getYelpInfo(this.props.restaurant.factual_id)
+    console.log('query: ', this.props.location.query.id);
+    if (!this.props.restaurant ||
+        this.props.restaurant.factual_id !== this.props.location.query.id ) {
+      this.props.getAllRestaurantDetails(this.props.location.query.id);
+    } else  {
+      this.props.getFourInfo(this.props.restaurant.latitude, this.props.restaurant.longitude);
+      this.props.getYelpInfo(this.props.restaurant.factual_id);
+    }
   }
   render() {
     
@@ -19,12 +25,12 @@ class DetailsPage extends Component {
     } else {
       this.fourInfo = <p>Unable to find FourSquare for this location</p>;
     }
-
+    console.log('yelp info', this.props.yelpInfo.name);
     return (
       <div>
-        {this.props.restaurant && this.props.restaurant.factual_id === this.props.params.restaurantId ?
+        {this.props.restaurant.factual_id === this.props.location.query.id ?
           <p>{this.props.restaurant.name}</p> :
-          <h1>Restaurant not loaded</h1>
+          <h1>Restaurant loading ...</h1>
           }
         <div>
           {Object.keys(this.props.yelpInfo).length > 1 && this.props.yelpInfo.name === this.props.restaurant.name ? <p>{this.props.yelpInfo.rating}</p> :
@@ -59,7 +65,7 @@ class DetailsPage extends Component {
 
 DetailsPage.propTypes = {
   restaurant: PropTypes.object.isRequired,
-  getRestaurantDetails: PropTypes.func.isRequired,
+  getAllRestaurantDetails: PropTypes.func.isRequired,
   params: PropTypes.string.isRequired,
   getYelpInfo: PropTypes.func.isRequired,
   getFourInfo: PropTypes.func.isRequired,
@@ -77,8 +83,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getRestaurantDetails: id => dispatch(
-      restaurantActions.getRestaurantDetails(id)
+    getAllRestaurantDetails: id => dispatch(
+      restaurantActions.getAllRestaurantDetails(id)
       ),
     getYelpInfo: id => dispatch(
       restaurantActions.getYelpInfo(id)

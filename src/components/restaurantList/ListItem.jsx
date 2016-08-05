@@ -9,7 +9,7 @@ const ListItem = (props) => (
   <li>
     <Link
       onClick={() => props.setRestaurantDetails(props)}
-      to={`/detailsPage/${props.factual_id}`}
+      to={{ pathname: 'detailsPage', query: { id: props.factual_id } }}
     >
       <h1>{props.name}</h1>
     </Link>

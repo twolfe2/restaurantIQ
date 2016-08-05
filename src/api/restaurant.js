@@ -24,6 +24,9 @@ export function getFourInfo(lat, long) {
   return axios.get(`${detailsURL}/foursquare/${lat}/${long}`);
 }
 
+export function getOneRestaurant(id) {
+  return axios.get(`${searchURL}/${id}`);
+}
 
 // export default function restaurantApi {
 //   getRestaurants: (searchObj) => axios.post(searchURL, searchObj),

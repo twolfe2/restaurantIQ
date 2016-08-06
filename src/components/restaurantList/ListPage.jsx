@@ -4,7 +4,11 @@ import { browserHistory } from 'react-router';
 import CircularProgress from 'material-ui/CircularProgress';
 import ListItem from './ListItem';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import customTheme from '../theme';
+import FlatButton from 'material-ui/FlatButton';
 import * as restaurantActions from '../../actions/restaurantActions';
+
 
 
 class ListPage extends Component {
@@ -25,18 +29,32 @@ class ListPage extends Component {
       transform: 'translate(-50%, -50%)',
     };
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={getMuiTheme(customTheme)}>
       <div>
       {this.props.restaurants.isLoading || !this.props.restaurants.restaurantList ?
         <div style={center}>
           <CircularProgress size={2} />
-          <p>Loading restaurants...</p>
+          <h5>Loading restaurants...</h5>
         </div> :
-        <ul>
+        <div>
+        <br/>
+         <FlatButton
+          icon={<i className="fa fa-chevron-left fa-2x" />}
+          style={{right: 25}}
+          onClick={() => browserHistory.push('/')}
+          >
+
+          </FlatButton>
+          <br/>
+        <div>
         { this.props.restaurants.restaurantList.map((restaurant, i) =>
+          <div>
+          <br/>
           <ListItem {...restaurant} key={i} />
+          </div>
         )}
-        </ul>
+        </div>
+        </div>
       }
       </div>
       </MuiThemeProvider>

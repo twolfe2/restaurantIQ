@@ -1,3 +1,24 @@
 a.active {
   color: orange;
 }
+
+.themeColor {
+  color: #4CAF50;
+}
+
+.grey {
+  color: lightgrey;
+}
+
+.dollarSize {
+  font-size: 17px;
+}
+
+.leaflet-container {
+    height: 400px;
+    width: 100%;
+}
+
+body{
+
+}

@@ -9,19 +9,33 @@ export function getRestaurants(searchObj) {
 }
 
 export function getYelpInfo(id) {
-  return axios.get(`${detailsURL}/crosswalk/${id}`)
+  return axios.get(`${detailsURL}/getYelp/${id}`)
     .then(res => {
-      console.log('crosswalk res', res);
       const yelpId = res.data[0].url.split('/')[4];
-      console.log('yelpId', yelpId);
       return axios.get(`${detailsURL}/yelp/${yelpId}`);
     }).catch(err => {
       console.log(err);
     });
 }
 
-export function getFourInfo(lat, long) {
-  return axios.get(`${detailsURL}/foursquare/${lat}/${long}`);
+export function getCrosswalk(id) {
+  return axios.get(`${detailsURL}/crosswalk/${id}`);
+}
+
+export function getFourInfo(id) {
+  return axios.get(`${detailsURL}/getFoursquare/${id}`)
+    .then(res => {
+      let fourId;
+      res.data.forEach(elem => {
+        if ('namespace_id' in elem ) {
+          fourId = elem.namespace_id;
+        }
+      });
+      console.log('api four', fourId);
+      return axios.get(`${detailsURL}/foursquare/${fourId}`);
+    }).catch(err => {
+      console.log(err);
+    });
 }
 
 export function getOneRestaurant(id) {

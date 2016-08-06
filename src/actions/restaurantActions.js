@@ -23,6 +23,15 @@ function fourSuccess(fourInfo) {
   return { type: types.SET_FOUR_INFO, fourInfo };
 }
 
+function clearInputs() {
+  console.log('in clearInputs');
+  return { type: types.CLEAR_INPUTS };
+}
+
+function crosswalkSuccess(crosswalk) {
+  return { type: types.GET_CROSSWALK, crosswalk };
+}
+
 export function getYelpInfo(id) {
   return dispatch => {
     restaurantApi.getYelpInfo(id)
@@ -33,12 +42,11 @@ export function getYelpInfo(id) {
   };
 }
 
-export function getFourInfo(lat, long) {
+export function getFourInfo(id) {
   return dispatch => {
-    restaurantApi.getFourInfo(lat, long)
+    restaurantApi.getFourInfo(id)
       .then(res => {
-        console.log('action res', res);
-        dispatch(fourSuccess(res.data.response));
+        dispatch(fourSuccess(res.data.response.venue));
       }).catch(err => console.log(err));
   };
 }
@@ -63,6 +71,19 @@ export function getAllRestaurantDetails(id) {
   };
 }
 
+export function getCrosswalk(id) {
+  return dispatch => {
+    console.log('in getCrosswalk');
+    restaurantApi.getCrosswalk(id)
+      .then(res => {
+        console.log('crosswalk', res);
+        dispatch(crosswalkSuccess(res.data));
+      }).catch(err => {
+        console.log('err', err);
+      })
+  }
+}
+
 export function getRestaurantList(searchObj) {
   return dispatch => {
     dispatch(toggleLoading());
@@ -70,6 +91,7 @@ export function getRestaurantList(searchObj) {
       .then(res => {
         dispatch(restaurantListSuccess(res.data));
         dispatch(toggleLoading());
+        dispatch(clearInputs());
       }).catch(err => {
         restaurantListFail(err);
       });

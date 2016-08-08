@@ -3,3 +3,5 @@
 
 
 ![Main Page](/images/restaurantIQMain.png?raw=true "Splash Page")
+![List View](/images/restaurantIQ.png?raw=true "List View")
+![Details](/images/restaurantIQDetails.png?raw=true "Details View")

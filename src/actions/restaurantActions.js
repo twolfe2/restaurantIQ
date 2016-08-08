@@ -11,7 +11,6 @@ function restaurantListFail(err) {
 }
 
 function toggleLoading() {
-  console.log('toggle loading actions');
   return { type: types.TOGGLE_LOADING };
 }
 
@@ -24,7 +23,6 @@ function fourSuccess(fourInfo) {
 }
 
 function clearInputs() {
-  console.log('in clearInputs');
   return { type: types.CLEAR_INPUTS };
 }
 
@@ -36,7 +34,6 @@ export function getYelpInfo(id) {
   return dispatch => {
     restaurantApi.getYelpInfo(id)
       .then(res => {
-        console.log('yelp success:', res.data);
         dispatch(yelpSuccess(res.data));
       }).catch(err => console.log(err));
   };
@@ -61,7 +58,6 @@ export function getAllRestaurantDetails(id) {
     restaurantApi.getOneRestaurant(id)
       .then(res => {
         const rest = res.data[0];
-        console.log('rest id: ', rest.factual_id);
         dispatch(getYelpInfo(rest.factual_id));
         dispatch(getFourInfo(rest.latitude, rest.longitude));
         dispatch(setRestaurantDetails(res.data[0]));
@@ -73,10 +69,8 @@ export function getAllRestaurantDetails(id) {
 
 export function getCrosswalk(id) {
   return dispatch => {
-    console.log('in getCrosswalk');
     restaurantApi.getCrosswalk(id)
       .then(res => {
-        console.log('crosswalk', res);
         dispatch(crosswalkSuccess(res.data));
       }).catch(err => {
         console.log('err', err);

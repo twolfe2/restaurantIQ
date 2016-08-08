@@ -18,7 +18,6 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 class DetailsPage extends Component {
   constructor(props) {
     super(props);
-    console.log('details props', props);
     if(Object.keys(this.props.restaurant).length  < 2) {
         browserHistory.push('/');
 
@@ -45,7 +44,6 @@ class DetailsPage extends Component {
       },
     };
     const position = [this.props.restaurant.latitude, this.props.restaurant.longitude];
-    console.log('fourInfo', this.props.fourInfo);
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(customTheme)}>
         <div>

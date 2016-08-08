@@ -4,7 +4,6 @@ function setUserLocation(coords) {
   return { type: types.SET_USER_LOCATION, coords };
 }
 function toggleLoading() {
-  console.log('toggle loading actions');
   return { type: types.TOGGLE_LOADING_INPUT };
 }
 

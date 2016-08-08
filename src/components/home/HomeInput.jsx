@@ -19,7 +19,8 @@ const loader = {
 }
 const paperStyle = {
   maxHeight: 360,
-  maxWidth: 400,
+  width: '94%',
+  maxWidth: 340,
   margin: 10,
   paddingBottom: 15,
   textAlign: 'center',

@@ -4,7 +4,6 @@ const searchURL = 'https://restaurant-server.herokuapp.com/api/restaurants';
 const detailsURL = 'https://restaurant-server.herokuapp.com/api/details';
 
 export function getRestaurants(searchObj) {
-  console.log('in rest api', searchObj);
   return axios.post(searchURL, searchObj);
 }
 
@@ -31,7 +30,6 @@ export function getFourInfo(id) {
           fourId = elem.namespace_id;
         }
       });
-      console.log('api four', fourId);
       return axios.get(`${detailsURL}/foursquare/${fourId}`);
     }).catch(err => {
       console.log(err);

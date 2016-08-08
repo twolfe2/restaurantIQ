@@ -6,18 +6,14 @@ export default function restaurantReducer(
   // console.log('state in rs reducer', state);
   switch (action.type) {
     case types.RESTAURANT_SEARCH:
-      console.log('reducer rs', action.restaurantList);
       return Object.assign({}, state, { restaurantList: action.restaurantList });
     case types.TOGGLE_LOADING:
-      console.log('toggle loading', state);
       return Object.assign({}, state, { isLoading: !state.isLoading });
     case types.SET_RESTAURANT_DETAILS:
-      console.log('set rest details', action.restaurant);
       return Object.assign({}, state, { currRestaurant: action.restaurant });
     case types.SET_YELP_INFO:
       return Object.assign({}, state, { yelpInfo: action.yelpInfo });
     case types.SET_FOUR_INFO:
-      console.log('four reducer', action.fourInfo);
       return Object.assign({}, state, { fourInfo: action.fourInfo });
     case types.GET_CROSSWALK:
       return Object.assign({}, state, { crosswalk: action.crosswalk });

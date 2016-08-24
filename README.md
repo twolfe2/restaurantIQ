@@ -6,7 +6,7 @@
   * Redux
   * Express
   * Material Design
-  * (Factual API)[http://developer.factual.com/]
+  * [Factual API](http://developer.factual.com/)
 
 ![Main Page](/images/restaurantIQMain.png?raw=true "Splash Page")
 ![List View](/images/restaurantIQ.png?raw=true "List View")

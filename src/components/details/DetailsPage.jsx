@@ -158,7 +158,7 @@ class DetailsPage extends Component {
                 return (
                   place.url ?
                     <a href={place.url} target="_blank" rel="noopener noreferrer">
-                      <Chip backgroundColor={indigoA200} style={styles.chip}>
+                      <Chip backgroundColor={blue300} style={styles.chip}>
                         {place.namespace}
                       </Chip>
                     </a> :
